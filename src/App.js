@@ -4,7 +4,8 @@ import {AppDrawer} from "./components/AppDrawer";
 import Container from "@material-ui/core/Container";
 import {BrowserRouter, Route} from "react-router-dom";
 import AppHomePage from "./components/AppHomePage";
-import AppServicePage from "./components/AppServicesPage";
+import AppServicePage from "./components/Services/AppServicesPage";
+import AppTestPage from "./components/AppTestPage";
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                 <Container maxWidth="md">
                     <Route path='/home' render={() => <AppHomePage/>}/>
                     <Route path='/services' render={() => <AppServicePage/>}/>
+                    <Route path='/test' render={() => <AppTestPage/>}/>
                 </Container>
             </BrowserRouter>
         </div>
