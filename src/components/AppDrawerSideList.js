@@ -7,7 +7,7 @@ import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import HomeIcon from '@material-ui/icons/Home';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import {makeStyles} from "@material-ui/styles";
-import {Extension} from "@material-ui/icons";
+import {Extension, ShoppingBasket} from "@material-ui/icons";
 
 export const AppDrawerSideList = (props) => {
     const useStyles = makeStyles({
@@ -39,6 +39,12 @@ export const AppDrawerSideList = (props) => {
                             <ImportContactsIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Услуги"/>
+                    </ListItem>
+                    <ListItem button key="order" component={NavLink} to="/order">
+                        <ListItemIcon>
+                            <ShoppingBasket/>
+                        </ListItemIcon>
+                        <ListItemText primary="Заказ"/>
                     </ListItem>
                     <ListItem button key="test" component={NavLink} to="/test">
                         <ListItemIcon>

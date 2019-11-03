@@ -4,11 +4,13 @@ import {AppDrawer} from "./components/AppDrawer";
 import Container from "@material-ui/core/Container";
 import {BrowserRouter, Route} from "react-router-dom";
 import AppHomePage from "./components/AppHomePage";
-import AppServicePage from "./components/Services/AppServicesPage";
 import AppTestPage from "./components/AppTestPage";
+import OrderPage from "./components/Order/OrderPage";
+import ServicesPage from "./components/ServecesPage";
+import {Provider} from "react-redux";
 
 
-const App = () => {
+const App = (props) => {
 
     const [state, setState] = React.useState({
         drawerIsOpen: false
@@ -24,13 +26,16 @@ const App = () => {
     return (
         <div className="App">
             <BrowserRouter>
-                <AppHeader toggleDrawer={toggleDrawer}/>
-                <AppDrawer toggleDrawer={toggleDrawer} drawerIsOpen={state.drawerIsOpen}/>
-                <Container maxWidth="md">
-                    <Route path='/home' render={() => <AppHomePage/>}/>
-                    <Route path='/services' render={() => <AppServicePage/>}/>
-                    <Route path='/test' render={() => <AppTestPage/>}/>
-                </Container>
+                <Provider store={props.store}>
+                    <AppHeader toggleDrawer={toggleDrawer}/>
+                    <AppDrawer toggleDrawer={toggleDrawer} drawerIsOpen={state.drawerIsOpen}/>
+                    <Container maxWidth="md">
+                        <Route path='/home' render={() => <AppHomePage/>}/>
+                        <Route path='/services' render={() => <ServicesPage/>}/>
+                        <Route path='/order' render={() => <OrderPage/>}/>
+                        <Route path='/test' render={() => <AppTestPage/>}/>
+                    </Container>
+                </Provider>
             </BrowserRouter>
         </div>
     );
