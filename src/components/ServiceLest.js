@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -15,7 +15,7 @@ const ServiceList = (props) => {
                         <ListItem button>
                             <Checkbox
                                 checked={service.checked}
-                                onChange={(event, isInputChecked) => props.onServiceSelect(event, isInputChecked, index)}
+                                onChange={(event, isInputChecked, id) => props.onServiceSelect(event, isInputChecked, service.id)}
                             />
                             <ListItemText id={service.name} primary={service.name} secondary={service.description}/>
                         </ListItem>
