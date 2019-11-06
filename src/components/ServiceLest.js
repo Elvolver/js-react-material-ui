@@ -6,7 +6,6 @@ import Divider from "@material-ui/core/Divider";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const ServiceList = (props) => {
-    debugger
     return (
         <div>
             <List>

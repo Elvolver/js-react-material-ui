@@ -8,6 +8,8 @@ import AppTestPage from "./components/AppTestPage";
 import OrderPage from "./components/Order/OrderPage";
 import ServicesPage from "./components/ServecesPage";
 import {Provider} from "react-redux";
+import AddServiceContainer from "./components/AddServiceContainer";
+import Box from "@material-ui/core/Box";
 
 
 const App = (props) => {
@@ -30,10 +32,13 @@ const App = (props) => {
                     <AppHeader toggleDrawer={toggleDrawer}/>
                     <AppDrawer toggleDrawer={toggleDrawer} drawerIsOpen={state.drawerIsOpen}/>
                     <Container maxWidth="md">
-                        <Route path='/home' render={() => <AppHomePage/>}/>
-                        <Route path='/services' render={() => <ServicesPage/>}/>
-                        <Route path='/order' render={() => <OrderPage/>}/>
-                        <Route path='/test' render={() => <AppTestPage/>}/>
+                        <Box component="div" m={1}>
+                            <Route path='/home' render={() => <AppHomePage/>}/>
+                            <Route path='/services' render={() => <ServicesPage/>}/>
+                            <Route path='/order' render={() => <OrderPage/>}/>
+                            <Route path='/test' render={() => <AppTestPage/>}/>
+                            <Route path='/addService' render={() => <AddServiceContainer/>}/>
+                        </Box>
                     </Container>
                 </Provider>
             </BrowserRouter>

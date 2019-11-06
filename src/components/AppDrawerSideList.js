@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import HomeIcon from '@material-ui/icons/Home';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import AddIcon from '@material-ui/icons/Add';
 import {makeStyles} from "@material-ui/styles";
 import {Extension, ShoppingBasket} from "@material-ui/icons";
 
@@ -52,6 +53,13 @@ export const AppDrawerSideList = (props) => {
                         </ListItemIcon>
                         <ListItemText primary="Test"/>
                     </ListItem>
+                    <ListItem button key="addService" component={NavLink} to="/addService">
+                        <ListItemIcon>
+                            <AddIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Добавить услугу"/>
+                    </ListItem>
+
                 </List>
             </div>
         )
