@@ -38,8 +38,8 @@ const ServicesPage = (props) => {
         },
         fab: {
             position: 'absolute',
-            bottom: theme.spacing(3),
-            right: theme.spacing(3),
+            bottom: 70,
+            right: 10
         },
     }));
 

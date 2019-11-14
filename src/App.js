@@ -10,6 +10,8 @@ import ServicesPage from "./components/ServecesPage";
 import {Provider} from "react-redux";
 import AddServiceContainer from "./components/AddServiceContainer";
 import Box from "@material-ui/core/Box";
+import GridNotificator from "./components/utils/GridNotificator";
+import AppBottomNavigation from "./components/AppBottomNavigation";
 
 
 const App = (props) => {
@@ -31,8 +33,9 @@ const App = (props) => {
                 <Provider store={props.store}>
                     <AppHeader toggleDrawer={toggleDrawer}/>
                     <AppDrawer toggleDrawer={toggleDrawer} drawerIsOpen={state.drawerIsOpen}/>
-                    <Container maxWidth="md">
-                        <Box component="div" m={1}>
+                    <GridNotificator/>
+                    <Container maxWidth="md" >
+                        <Box component="div" m={1} mt={3}>
                             <Route path='/home' render={() => <AppHomePage/>}/>
                             <Route path='/services' render={() => <ServicesPage/>}/>
                             <Route path='/order' render={() => <OrderPage/>}/>
@@ -40,6 +43,9 @@ const App = (props) => {
                             <Route path='/addService' render={() => <AddServiceContainer/>}/>
                         </Box>
                     </Container>
+                    <br />
+                    <br />
+                    <AppBottomNavigation/>
                 </Provider>
             </BrowserRouter>
         </div>

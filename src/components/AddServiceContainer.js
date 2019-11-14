@@ -10,7 +10,6 @@ const AddServiceContainer = props => {
     let [isSubmitted, setSubmitted] = useState(false);
 
     const onSubmit = (formData) => {
-        debugger
         props.addService(formData.title, formData.description);
         setSubmitted(true);
     };

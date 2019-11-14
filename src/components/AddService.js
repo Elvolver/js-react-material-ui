@@ -1,16 +1,15 @@
 import {Redirect} from "react-router-dom";
 
 import React from 'react';
-import MaterialUiForm from "./MaterialUiForm";
 import {makeStyles} from "@material-ui/core";
+import MaterialUiForm from "./MaterialUiForm";
 
 const useStyles = makeStyles(theme => ({
     buttonGroup: {
-        margin: theme.spacing(1),
-        marginTop: theme.spacing(3)
+
     },
     textField: {
-        margin: theme.spacing(1),
+       width: '100%'
     },
 }));
 const AddService = props => {
