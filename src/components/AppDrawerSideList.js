@@ -41,6 +41,12 @@ export const AppDrawerSideList = (props) => {
                         </ListItemIcon>
                         <ListItemText primary="Услуги"/>
                     </ListItem>
+                    <ListItem button key="messages" component={NavLink} to="/messages">
+                        <ListItemIcon>
+                            <ImportContactsIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Сообщения"/>
+                    </ListItem>
                     <ListItem button key="order" component={NavLink} to="/order">
                         <ListItemIcon>
                             <ShoppingBasket/>

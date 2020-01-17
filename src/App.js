@@ -10,6 +10,9 @@ import ServicesPage from "./components/ServecesPage";
 import {Provider} from "react-redux";
 import AddServiceContainer from "./components/AddServiceContainer";
 import Box from "@material-ui/core/Box";
+import MessagePage from "./components/Message/MessagePage";
+import MessageContainer from "./components/Message/MessageContainer";
+import AddMessageContainer from "./components/Message/AddMessageContainer";
 
 
 const App = (props) => {
@@ -36,8 +39,10 @@ const App = (props) => {
                             <Route path='/home' render={() => <AppHomePage/>}/>
                             <Route path='/services' render={() => <ServicesPage/>}/>
                             <Route path='/order' render={() => <OrderPage/>}/>
+                            <Route path='/messages' render={() => <MessageContainer/>}/>
                             <Route path='/test' render={() => <AppTestPage/>}/>
                             <Route path='/addService' render={() => <AddServiceContainer/>}/>
+                            <Route path='/addMessage' render={() => <AddMessageContainer/>}/>
                         </Box>
                     </Container>
                 </Provider>
