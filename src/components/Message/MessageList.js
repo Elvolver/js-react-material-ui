@@ -15,9 +15,9 @@ const MessageList = (props) => {
                 {props.messages.messages.map((message, index) => (
                     <div key={index}>
                         <ListItem button>
-                            <ListItemText id={message.Id} primary={message.text}/>
+                            <ListItemText id={message.id} primary={message.text}/>
                             <ListItemSecondaryAction>
-                                <IconButton edge="end" aria-label="delete" onClick={() => props.deleteMessage(message.Id)}>
+                                <IconButton edge="end" aria-label="delete" onClick={() => props.deleteMessage(message.id)}>
                                     <DeleteIcon />
                                 </IconButton>
                             </ListItemSecondaryAction>

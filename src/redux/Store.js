@@ -3,10 +3,15 @@ import {reducer as formReducer} from 'redux-form'
 import servicesReducer from "./ServicesReducer";
 import messageReducer from "./MessageReducer";
 import thunkMiddleware from 'redux-thunk';
+import authReducer from "./AuthReduser";
+import appReducer from "./AppReducer";
+
 
 let reducers = combineReducers({
     services: servicesReducer,
     messages: messageReducer,
+    auth: authReducer,
+    app: appReducer,
     form: formReducer
 });
 

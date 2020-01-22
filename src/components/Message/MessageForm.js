@@ -85,7 +85,7 @@ const MessageForm = props => {
             </ButtonGroup>
         </form>
     )
-}
+};
 
 export default reduxForm({
     form: 'MessageForm', // a unique identifier for this form

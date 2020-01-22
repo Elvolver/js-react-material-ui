@@ -1,4 +1,5 @@
 import {MessageAPI} from "../api/api";
+import {loadingOff, loadingOn} from "./AppReducer";
 
 const SET_MESSAGES = 'SET_MESSAGES';
 const ADD_MESSAGE = 'ADD_MESSAGE';
@@ -21,7 +22,7 @@ const messageReducer = (state = initialState, action) => {
             return {
                 ...state, messages: [
                     ...state.messages, {
-                        id: action.id, text: action.text
+                        id: action.message.id, text: action.message.text
                     }
                 ]
             };
@@ -33,14 +34,14 @@ const messageReducer = (state = initialState, action) => {
                         }
                     }
                 )
-            }
+            };
         default:
             return state;
     }
 };
 
 export const getMessages = () => (dispatch) => {
-    MessageAPI.getMessages()
+    return MessageAPI.getMessages()
         .then(response => {
             dispatch(setMessages(response))
         })
@@ -50,26 +51,25 @@ export const getMessages = () => (dispatch) => {
 };
 
 export const addMessage = (text = 'NoText') => (dispatch) => {
-    debugger
-    MessageAPI.addMessage(text)
+    let message  = {
+        id: 999,
+        text: text
+    };
+    dispatch(addMessageToState(message));
+    return MessageAPI.addMessage(text)
         .then(response => {
-            let message = {
-                id: response.id,
-                text: response.text
+            message = {
+                id: response.id
             };
-            dispatch(addMessageToState(message))
+
         });
-    return {type: ADD_MESSAGE, text};
 };
 
 export const deleteMessage = (id) => (dispatch) => {
-    debugger
-    MessageAPI.deleteMessage(id)
-        .then(response => {
-             dispatch(deleteMessageFromState(id))
-            }
-        );
-    return {type: DELETE_MESSAGE, id: id};
+
+    return MessageAPI.deleteMessage(id).then(response => {
+        dispatch(deleteMessageFromState(id));
+    })
 };
 
 export const addMessageToState = (message) => {

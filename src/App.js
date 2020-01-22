@@ -1,54 +1,43 @@
-import React from 'react';
-import {AppHeader} from "./components/AppHeader";
-import {AppDrawer} from "./components/AppDrawer";
-import Container from "@material-ui/core/Container";
-import {BrowserRouter, Route} from "react-router-dom";
-import AppHomePage from "./components/AppHomePage";
-import AppTestPage from "./components/AppTestPage";
-import OrderPage from "./components/Order/OrderPage";
-import ServicesPage from "./components/ServecesPage";
-import {Provider} from "react-redux";
-import AddServiceContainer from "./components/AddServiceContainer";
-import Box from "@material-ui/core/Box";
-import MessagePage from "./components/Message/MessagePage";
-import MessageContainer from "./components/Message/MessageContainer";
-import AddMessageContainer from "./components/Message/AddMessageContainer";
+import React, { useState, useEffect } from 'react';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {connect, Provider} from "react-redux";
+import SignInPageTemplate from "./components/templates/SignInPageTemplate";
+import AppWithHeader from "./components/templates/MainPageTemplate";
+import { Circle } from 'react-preloaders';
+import {compose} from "redux";
 
 
 const App = (props) => {
 
-    const [state, setState] = React.useState({
-        drawerIsOpen: false
-    });
+    const [loading, setLoading] = useState(false);
 
-    const toggleDrawer = (open) => event => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setState({...state, drawerIsOpen: open});
-    };
+    useEffect(() => {
+        setLoading(props.isLoading)
+    });
 
     return (
         <div className="App">
             <BrowserRouter>
                 <Provider store={props.store}>
-                    <AppHeader toggleDrawer={toggleDrawer}/>
-                    <AppDrawer toggleDrawer={toggleDrawer} drawerIsOpen={state.drawerIsOpen}/>
-                    <Container maxWidth="md">
-                        <Box component="div" m={1}>
-                            <Route path='/home' render={() => <AppHomePage/>}/>
-                            <Route path='/services' render={() => <ServicesPage/>}/>
-                            <Route path='/order' render={() => <OrderPage/>}/>
-                            <Route path='/messages' render={() => <MessageContainer/>}/>
-                            <Route path='/test' render={() => <AppTestPage/>}/>
-                            <Route path='/addService' render={() => <AddServiceContainer/>}/>
-                            <Route path='/addMessage' render={() => <AddMessageContainer/>}/>
-                        </Box>
-                    </Container>
+                    <React.Fragment>
+                        <Switch>
+                            <div>
+                                <Route path='/login' render={() => <SignInPageTemplate/>}/>
+                                <Route path='/' render={() => <AppWithHeader/>}/>
+                            </div>
+                        </Switch>
+                    </React.Fragment>
+                    <Circle customLoading={loading}/>
                 </Provider>
             </BrowserRouter>
         </div>
     );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+    isLoading: state.app.isLoading
+});
+
+export default compose(
+    connect(mapStateToProps),
+)(App);
